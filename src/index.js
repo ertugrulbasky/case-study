@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Bulletin from "./pages/bulletin.js";
+import App from "./App";
 
 const el = document.getElementById("app");
 
-ReactDOM.render(<Bulletin />, el);
+ReactDOM.render(<App />,el);

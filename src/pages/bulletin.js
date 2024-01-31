@@ -1,6 +1,7 @@
-import { Table } from "antd";
-import React, { useEffect, useState } from "react";
+import { Button, Table } from "antd";
+import React, { useEffect, useState, useContext } from "react";
 import getBulletin from "../services/getBulletin";
+import CardContext from "../context/CardContext";
 
 const columns = [
   {
@@ -9,28 +10,26 @@ const columns = [
     key: "LN",
     width: 400,
     render: (text, record) => {
-      console.log(record);
+      console.log(record)
       return (
         <div style={{ display: "list-item" }}>
           <div>
-            {record.D} {record.DAY} {record.LN}
+            {record.eventInfo}
           </div>
           <div>
-            {record.C} {record.T} {record.N}
+            {record.eventName} 
           </div>
         </div>
       );
     },
   },
+  
   {
     title: "Yorumlar",
-    dataIndex: "MBS",
-    key: "MBS",
-    render: (text, record) => {
-        console.log(record);
-        return <div>{4}</div>;
-      },
+    dataIndex: "comments",
+    key: "comment",
   },
+  
   {
     title: "1",
     dataIndex: "",
@@ -38,12 +37,8 @@ const columns = [
   },
   {
     title: "x",
-    dataIndex: "",
-    key: "",
-    render: (text, record) => {
-      console.log(record);
-      return <div>{record?.OCG[1].OC[1]?.O}</div>;
-    },
+    dataIndex: "x",
+    key: "x",
   },
   {
     title: "2",
@@ -57,12 +52,8 @@ const columns = [
   },
   {
     title: "ÜST",
-    dataIndex: "",
-    key: "",
-    render: (text, record) => {
-      console.log(record);
-      return <div>{record?.OCG[5]?.OC[26]?.O}</div>;
-    },
+    dataIndex: "top",
+    key: "top",
   },
   {
     title: "H1",
@@ -91,30 +82,18 @@ const columns = [
   },
   {
     title: "1-X",
-    dataIndex: "",
-    key: "",
-    render: (text, record) => {
-      console.log(record);
-      return <div>{record?.OCG[2].OC[3]?.O}</div>;
-    },
+    dataIndex: "1x",
+    key: "1x",
   },
   {
     title: "1-2",
-    dataIndex: "",
-    key: "",
-    render: (text, record) => {
-      console.log(record);
-      return <div>{record?.OCG[2].OC[4]?.O}</div>;
-    },
+    dataIndex: "12",
+    key: "12",
   },
   {
     title: "X-2",
-    dataIndex: "",
-    key: "",
-    render: (text, record) => {
-      console.log(record);
-      return <div>{record?.OCG[2].OC[5]?.O}</div>;
-    },
+    dataIndex: "x2",
+    key: "x2",
   },
   {
     title: "VAR",
@@ -130,21 +109,24 @@ const columns = [
     title: "+99",
     dataIndex: "",
     key: "",
-    render: (text, record) => {
-        console.log(record);
-        return <div>{3}</div>;
-      },
+    render: (text, record,index) => {
+      return <div>{3}</div>;
+    },
   },
+  
 ];
 
 const Bulletin = () => {
+  const { addToCard, items } = useContext(CardContext);
+
   const [bulletin, setBulletin] = useState([]);
   useEffect(() => {
-    getBulletin().then((res) => {
-      setBulletin(res?.data);
+    getBulletin().then((tableData) => {
+      setBulletin(tableData)
     });
   }, []);
-  return <Table pagination={false} dataSource={bulletin} columns={columns} />;
+
+  return <Table pagination={false} dataSource={bulletin}  columns={columns} />;
 };
 
 export default Bulletin;
