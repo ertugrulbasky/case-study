@@ -11,9 +11,9 @@ const getBulletin = async () => {
             "comments" : 4,
             "x" : item?.OCG[1].OC[1]?.O,
             "top": item?.OCG[5]?.OC[26]?.O,
-            "1x": item?.OCG[2].OC[3]?.O,
-            "12" : item?.OCG[2].OC[4]?.O,
-            "x2" : item?.OCG[2].OC[5]?.O
+            "onex": item?.OCG[2].OC[3]?.O,
+            "onetwo" : item?.OCG[2].OC[4]?.O,
+            "xtwo" : item?.OCG[2].OC[5]?.O
         })
     })
     return tableData;
