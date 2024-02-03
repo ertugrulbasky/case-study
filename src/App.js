@@ -1,13 +1,12 @@
 import React from 'react';
-import { CardProvider } from './context/CardContext';
-import Bulletin from './pages/bulletin';
-
+import { CouponProvider } from './context/CouponContext';
+import HomePage from './pages/HomePage';
 
 const App = () => {
   return (
-    <CardProvider>
-      <Bulletin />
-    </CardProvider>
+    <CouponProvider>
+      <HomePage />
+    </CouponProvider>
   )
 }
 export default App;

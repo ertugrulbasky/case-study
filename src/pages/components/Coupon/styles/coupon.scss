@@ -1,0 +1,16 @@
+.couponCard {
+  width: 600px;
+  bottom: 0px;
+  position: fixed;
+  z-index: 999;
+  margin-right: auto;
+}
+
+.totalAmountInfo {
+  float: right;
+}
+
+.eventList {
+  display: flex;
+  justify-content: space-between;
+}
